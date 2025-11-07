@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		866842552EBB779F0036835B /* Hen Hub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hen Hub.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		866842552EBB779F0036835B /* Hen Hub Plus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hen Hub Plus.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -40,7 +40,7 @@
 		866842562EBB779F0036835B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				866842552EBB779F0036835B /* Hen Hub.app */,
+				866842552EBB779F0036835B /* Hen Hub Plus.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,9 +48,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		866842542EBB779F0036835B /* Hen Hub */ = {
+		866842542EBB779F0036835B /* Hen Hub Plus */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 866842632EBB77A00036835B /* Build configuration list for PBXNativeTarget "Hen Hub" */;
+			buildConfigurationList = 866842632EBB77A00036835B /* Build configuration list for PBXNativeTarget "Hen Hub Plus" */;
 			buildPhases = (
 				866842512EBB779F0036835B /* Sources */,
 				866842522EBB779F0036835B /* Frameworks */,
@@ -63,11 +63,11 @@
 			fileSystemSynchronizedGroups = (
 				866842572EBB779F0036835B /* Hen Hub */,
 			);
-			name = "Hen Hub";
+			name = "Hen Hub Plus";
 			packageProductDependencies = (
 			);
 			productName = "Hen Hub";
-			productReference = 866842552EBB779F0036835B /* Hen Hub.app */;
+			productReference = 866842552EBB779F0036835B /* Hen Hub Plus.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -85,7 +85,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 866842502EBB779F0036835B /* Build configuration list for PBXProject "Hen Hub" */;
+			buildConfigurationList = 866842502EBB779F0036835B /* Build configuration list for PBXProject "Hen Hub Plus" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -99,7 +99,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				866842542EBB779F0036835B /* Hen Hub */,
+				866842542EBB779F0036835B /* Hen Hub Plus */,
 			);
 		};
 /* End PBXProject section */
@@ -264,11 +264,15 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app.Hen-Hub";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.henhubapphub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -292,18 +296,22 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.app.Hen-Hub";
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.henhubapphub;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		866842502EBB779F0036835B /* Build configuration list for PBXProject "Hen Hub" */ = {
+		866842502EBB779F0036835B /* Build configuration list for PBXProject "Hen Hub Plus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				866842612EBB77A00036835B /* Debug */,
@@ -312,7 +320,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		866842632EBB77A00036835B /* Build configuration list for PBXNativeTarget "Hen Hub" */ = {
+		866842632EBB77A00036835B /* Build configuration list for PBXNativeTarget "Hen Hub Plus" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				866842642EBB77A00036835B /* Debug */,
