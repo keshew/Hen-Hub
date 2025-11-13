@@ -12,7 +12,6 @@ extension Color {
     static let infoBlue = Color(red: 0.24, green: 0.48, blue: 0.71)   // #3E7BB6
 }
 
-// Простая модель для примера
 struct Chicken: Identifiable, Codable {
     let id: UUID
     var name: String
