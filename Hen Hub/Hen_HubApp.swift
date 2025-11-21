@@ -13,6 +13,7 @@ struct Hen_HubApp: App {
     var body: some Scene {
         WindowGroup {
             LoadingView()
+                .preferredColorScheme(.light)
         }
     }
 }

@@ -1035,9 +1035,6 @@ class CreateDetail: UIViewController, WKNavigationDelegate, WKUIDelegate {
             if scheme != "http" && scheme != "https" {
                 if UIApplication.shared.canOpenURL(url) {
                     UIApplication.shared.open(url)
-                    if webView.canGoBack {
-                        webView.goBack()
-                    }
                     
                     decisionHandler(.cancel)
                     return
