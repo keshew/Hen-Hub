@@ -54,6 +54,7 @@ class FarmData: ObservableObject {
 struct ContentView: View {
     @StateObject private var farm = FarmData()
     @StateObject private var eggTracker = EggTrackerData()
+    @StateObject private var weatherJournal = WeatherJournal()
     
     var body: some View {
         ZStack {
@@ -78,6 +79,10 @@ struct ContentView: View {
                     .tabItem {
                         Label("Feed", systemImage: "cart.fill")
                     }
+                JournalView()
+                    .tabItem {
+                        Label("Weather Journal", systemImage: "book.fill")
+                    }
                 FarmTasksView()
                     .tabItem {
                         Label("Tasks", systemImage: "checkmark.circle.fill")
@@ -92,6 +97,7 @@ struct ContentView: View {
                     }
             }
             .environmentObject(farm)
+            .environmentObject(weatherJournal) 
         }
     }
 }
@@ -262,6 +268,112 @@ struct MiniEggChart: View {
         .shadow(radius: 4)
     }
 }
+
+// Модель для записи дневника
+struct WeatherEntry: Identifiable, Codable {
+    var id = UUID()
+    var date: Date
+    var temperature: String
+    var description: String
+    var notes: String
+}
+
+// ViewModel для хранения и управления записями
+class WeatherJournal: ObservableObject {
+    @Published var entries: [WeatherEntry] = []
+    
+    // Сохранять/загружать из UserDefaults или файловой системы
+    func addEntry(_ entry: WeatherEntry) {
+        entries.insert(entry, at: 0)
+        save()
+    }
+    
+    func save() {
+        if let data = try? JSONEncoder().encode(entries) {
+            UserDefaults.standard.setValue(data, forKey: "WeatherJournalEntries")
+        }
+    }
+    
+    func load() {
+        if let data = UserDefaults.standard.data(forKey: "WeatherJournalEntries"),
+           let saved = try? JSONDecoder().decode([WeatherEntry].self, from: data) {
+            entries = saved
+        }
+    }
+}
+
+struct JournalView: View {
+    @EnvironmentObject var journal: WeatherJournal
+    @State private var showingAddEntry = false
+    
+    var body: some View {
+        NavigationView {
+            List {
+                ForEach(journal.entries) { entry in
+                    VStack(alignment: .leading) {
+                        Text(entry.date, style: .date)
+                            .font(.headline)
+                        Text("\(entry.temperature), \(entry.description)")
+                            .font(.subheadline)
+                        Text(entry.notes)
+                    }
+                    .padding(.vertical, 5)
+                }
+            }
+            .navigationTitle("Weather Journal")
+            .toolbar {
+                Button {
+                    showingAddEntry = true
+                } label: {
+                    Image(systemName: "plus")
+                }
+            }
+            .sheet(isPresented: $showingAddEntry) {
+                AddEntryView()
+                    .environmentObject(journal)
+            }
+        }
+        .onAppear {
+            journal.load()
+        }
+    }
+}
+
+struct AddEntryView: View {
+    @EnvironmentObject var journal: WeatherJournal
+    @Environment(\.dismiss) var dismiss
+    
+    @State private var temperature = ""
+    @State private var description = ""
+    @State private var notes = ""
+    @State private var date = Date()
+    
+    var body: some View {
+        NavigationView {
+            Form {
+                DatePicker("Date", selection: $date, displayedComponents: .date)
+                TextField("Temperature", text: $temperature)
+                TextField("Description", text: $description)
+                TextEditor(text: $notes)
+                    .frame(height: 100)
+            }
+            .navigationTitle("New Entry")
+            .toolbar {
+                ToolbarItem(placement: .confirmationAction) {
+                    Button("Save") {
+                        let newEntry = WeatherEntry(date: date, temperature: temperature, description: description, notes: notes)
+                        journal.addEntry(newEntry)
+                        dismiss()
+                    }
+                }
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") { dismiss() }
+                }
+            }
+        }
+    }
+}
+
 
 struct ChickenListView: View {
     @EnvironmentObject var farm: FarmData
