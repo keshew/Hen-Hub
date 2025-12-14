@@ -89,3 +89,9 @@ struct ContentView: View {
         }
     }
 }
+
+#Preview {
+    ContentView()
+        .environmentObject(FarmData())
+        .environmentObject(WeatherJournal())
+}
